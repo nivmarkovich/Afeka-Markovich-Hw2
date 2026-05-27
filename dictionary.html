@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CNN &amp; AI Glossary — 40 Terms</title>
+  <link rel="stylesheet" href="dict.css">
+</head>
+<body>
+  <header class="dict-header">
+    <h1>CNN &amp; Artificial Intelligence Glossary</h1>
+    <p>Exactly 40 terms with clear definitions for your university reference.</p>
+    <nav>
+      <a href="index.html">Model</a>
+      <a href="dictionary.html" class="active">Dictionary</a>
+    </nav>
+  </header>
+
+  <main class="dict-main">
+    <dl class="glossary">
+      <div class="term-block">
+        <dt>1. Artificial Intelligence (AI)</dt>
+        <dd>The field of computer science focused on building systems that perform tasks requiring human-like perception, reasoning, or decision-making.</dd>
+      </div>
+      <div class="term-block">
+        <dt>2. Machine Learning (ML)</dt>
+        <dd>A subset of AI where models learn patterns from data instead of being programmed with explicit rules for every case.</dd>
+      </div>
+      <div class="term-block">
+        <dt>3. Neural Network</dt>
+        <dd>A computational model made of interconnected units (neurons) that transform inputs through weighted sums and activation functions.</dd>
+      </div>
+      <div class="term-block">
+        <dt>4. Convolutional Neural Network (CNN)</dt>
+        <dd>A neural network architecture designed for grid-like data (especially images), using convolution layers to detect local spatial patterns.</dd>
+      </div>
+      <div class="term-block">
+        <dt>5. Neuron</dt>
+        <dd>A single computational unit that computes a weighted sum of its inputs, adds a bias, and passes the result through an activation function.</dd>
+      </div>
+      <div class="term-block">
+        <dt>6. Layer</dt>
+        <dd>A stage in the network where a group of neurons or filters processes data and passes the result to the next stage.</dd>
+      </div>
+      <div class="term-block">
+        <dt>7. Weights</dt>
+        <dd>Learnable parameters that scale each connection or filter coefficient; training adjusts weights to reduce error.</dd>
+      </div>
+      <div class="term-block">
+        <dt>8. Bias</dt>
+        <dd>An extra learnable offset added after the weighted sum, allowing the model to shift activations without changing input patterns.</dd>
+      </div>
+      <div class="term-block">
+        <dt>9. Convolution</dt>
+        <dd>An operation that slides a small kernel (filter) over the input, computing dot products at each position to produce a feature map.</dd>
+      </div>
+      <div class="term-block">
+        <dt>10. Filter (Kernel)</dt>
+        <dd>A small matrix of weights used in convolution to detect features such as edges, corners, or textures.</dd>
+      </div>
+      <div class="term-block">
+        <dt>11. Feature Map</dt>
+        <dd>The output of applying one filter across the entire input; each map highlights where a particular pattern is present.</dd>
+      </div>
+      <div class="term-block">
+        <dt>12. Channel</dt>
+        <dd>A separate slice of data in a tensor (e.g., red, green, blue in color images, or one channel for grayscale).</dd>
+      </div>
+      <div class="term-block">
+        <dt>13. Stride</dt>
+        <dd>The step size by which a filter moves across the input; a larger stride reduces output spatial dimensions faster.</dd>
+      </div>
+      <div class="term-block">
+        <dt>14. Padding</dt>
+        <dd>Extra pixels added around the input border so convolution can preserve spatial size or control boundary behavior.</dd>
+      </div>
+      <div class="term-block">
+        <dt>15. Pooling</dt>
+        <dd>A downsampling operation that reduces spatial resolution while keeping strong activations, commonly max or average pooling.</dd>
+      </div>
+      <div class="term-block">
+        <dt>16. Max Pooling</dt>
+        <dd>Pooling that keeps only the maximum value in each local window, making the representation more robust to small shifts.</dd>
+      </div>
+      <div class="term-block">
+        <dt>17. Activation Function</dt>
+        <dd>A nonlinear function applied after the weighted sum (e.g., ReLU) so the network can model complex relationships.</dd>
+      </div>
+      <div class="term-block">
+        <dt>18. ReLU (Rectified Linear Unit)</dt>
+        <dd>An activation defined as max(0, x); it is simple, fast, and helps reduce the vanishing-gradient problem in deep networks.</dd>
+      </div>
+      <div class="term-block">
+        <dt>19. Dense Layer (Fully Connected)</dt>
+        <dd>A layer where every neuron connects to all inputs from the previous layer, often used after convolution for final classification.</dd>
+      </div>
+      <div class="term-block">
+        <dt>20. Flattening</dt>
+        <dd>Reshaping multi-dimensional feature maps into a one-dimensional vector so they can feed into a dense layer.</dd>
+      </div>
+      <div class="term-block">
+        <dt>21. Forward Pass</dt>
+        <dd>Propagating input data through the network layer by layer to produce outputs (logits or probabilities).</dd>
+      </div>
+      <div class="term-block">
+        <dt>22. Backpropagation</dt>
+        <dd>The algorithm that computes gradients of the loss with respect to each weight by applying the chain rule from output to input.</dd>
+      </div>
+      <div class="term-block">
+        <dt>23. Loss Function</dt>
+        <dd>A scalar measure of how wrong the model’s predictions are; training aims to minimize this value.</dd>
+      </div>
+      <div class="term-block">
+        <dt>24. Cross-Entropy Loss</dt>
+        <dd>A common classification loss that penalizes confident wrong predictions; pairs naturally with softmax outputs.</dd>
+      </div>
+      <div class="term-block">
+        <dt>25. Softmax</dt>
+        <dd>A function that converts a vector of logits into a probability distribution that sums to 1 across classes.</dd>
+      </div>
+      <div class="term-block">
+        <dt>26. Gradient Descent</dt>
+        <dd>An optimization method that updates weights in the direction opposite to the gradient of the loss, scaled by a learning rate.</dd>
+      </div>
+      <div class="term-block">
+        <dt>27. Learning Rate</dt>
+        <dd>A hyperparameter controlling the step size of weight updates; too large causes instability, too small slows learning.</dd>
+      </div>
+      <div class="term-block">
+        <dt>28. Epoch</dt>
+        <dd>One complete pass through the entire training dataset (or a full training cycle over all provided samples).</dd>
+      </div>
+      <div class="term-block">
+        <dt>29. Batch</dt>
+        <dd>A subset of training examples processed together before updating weights; batching balances speed and gradient stability.</dd>
+      </div>
+      <div class="term-block">
+        <dt>30. Training Set</dt>
+        <dd>Data used to fit model parameters by minimizing loss through forward pass and backpropagation.</dd>
+      </div>
+      <div class="term-block">
+        <dt>31. Validation Set</dt>
+        <dd>Held-out data used during development to tune hyperparameters and monitor generalization without training on it directly.</dd>
+      </div>
+      <div class="term-block">
+        <dt>32. Test Set</dt>
+        <dd>Data reserved for final evaluation after training is complete, estimating performance on unseen examples.</dd>
+      </div>
+      <div class="term-block">
+        <dt>33. Accuracy</dt>
+        <dd>The fraction of predictions that match the correct class labels, often reported as a percentage.</dd>
+      </div>
+      <div class="term-block">
+        <dt>34. Error Rate</dt>
+        <dd>The proportion of incorrect predictions (often 1 minus accuracy), used to summarize classification mistakes.</dd>
+      </div>
+      <div class="term-block">
+        <dt>35. Overfitting</dt>
+        <dd>When a model memorizes training noise and performs poorly on new data because it is too complex or trained too long.</dd>
+      </div>
+      <div class="term-block">
+        <dt>36. Underfitting</dt>
+        <dd>When a model is too simple or under-trained to capture important patterns, yielding poor performance even on training data.</dd>
+      </div>
+      <div class="term-block">
+        <dt>37. Hyperparameter</dt>
+        <dd>A setting chosen before training (e.g., learning rate, number of filters) rather than learned from data like weights.</dd>
+      </div>
+      <div class="term-block">
+        <dt>38. Grayscale Image</dt>
+        <dd>An image represented by single intensity values per pixel instead of separate color channels, often normalized between 0 and 1.</dd>
+      </div>
+      <div class="term-block">
+        <dt>39. Tensor</dt>
+        <dd>A multi-dimensional array of numbers (e.g., height × width × channels) used to represent inputs, weights, and activations.</dd>
+      </div>
+      <div class="term-block">
+        <dt>40. Inference (Prediction)</dt>
+        <dd>Using a trained model’s forward pass only—without weight updates—to classify or score new inputs.</dd>
+      </div>
+    </dl>
+  </main>
+
+  <footer class="dict-footer">
+    <p>Vanilla CNN assignment — glossary page with exactly 40 terms.</p>
+  </footer>
+</body>
+</html>
