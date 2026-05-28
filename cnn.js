@@ -932,11 +932,38 @@
     setStatus('Model reset. Draw a shape and train.');
   }
 
+  function runDownloadWeights() {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) {
+      alert('No trained weights found in localStorage to download.');
+      return;
+    }
+    try {
+      const blob = new Blob([raw], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'weights.json';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      setStatus('Weights downloaded as weights.json');
+    } catch (err) {
+      console.error('Failed to download weights:', err);
+      setStatus('Error downloading weights.');
+    }
+  }
+
   function bindControls() {
     document.getElementById('btnTrain').addEventListener('click', runTraining);
     document.getElementById('btnPredict').addEventListener('click', runPredict);
     document.getElementById('btnReset').addEventListener('click', runReset);
     document.getElementById('btnClear').addEventListener('click', clearCanvas);
+    const btnDownload = document.getElementById('btnDownloadWeights');
+    if (btnDownload) {
+      btnDownload.addEventListener('click', runDownloadWeights);
+    }
 
     canvas.addEventListener('mousedown', startDraw);
     canvas.addEventListener('mousemove', moveDraw);
@@ -947,21 +974,39 @@
     canvas.addEventListener('touchend', endDraw, { passive: false });
   }
 
-  function startup() {
+  async function startup() {
     initCanvas();
     bindControls();
 
-    const loaded = loadModel();
+    let loaded = loadModel();
+    if (!loaded) {
+      setStatus('No local weights. Attempting to fetch weights.json...');
+      try {
+        const response = await fetch('weights.json');
+        if (!response.ok) {
+          throw new Error('HTTP error ' + response.status);
+        }
+        const text = await response.text();
+        const data = JSON.parse(text);
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+        loaded = CNN.fromJSON(data);
+        setStatus('Successfully loaded pre-trained weights from server.');
+      } catch (err) {
+        console.error('Fetch failed or invalid json:', err);
+        setStatus('Failed to load weights.json. Initialized random model.');
+        buildModelFromUI();
+      }
+    }
+
     if (loaded) {
       model = loaded;
       model.learningRate = getConfig().learningRate;
       elLayers.value = String(model.numLayers);
       elFilters.value = String(model.numFilters);
       elFilterSize.value = String(model.filterSize);
-      setStatus('Loaded saved weights from localStorage.');
-    } else {
-      model = null;
-      setStatus('No saved model. Adjust hyperparameters and Train.');
+      if (!statusEl.textContent.startsWith('Successfully loaded')) {
+        setStatus('Loaded saved weights from localStorage.');
+      }
     }
   }
 
